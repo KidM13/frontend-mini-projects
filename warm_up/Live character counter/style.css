@@ -1,0 +1,27 @@
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 2px solid black;
+    width: 325px;
+    justify-content: center;
+    border-radius: 5px; 
+    height: 60px;
+}
+
+#text{
+    display: block;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 20px;
+}
+
+.valid{
+border: 1px solid green;
+}
+.invalid{
+    border: 1px solid red;
+}
