@@ -47,3 +47,6 @@ button{
 .wrong{
   color: red;
 }
+#pro{
+  float: right;
+}

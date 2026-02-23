@@ -2,8 +2,10 @@ const questionEl = document.getElementById('question');
 const optionsEl = document.getElementById('options');
 const nextBtn = document.getElementById('next');
 const message = document.getElementById('message');
+const progress=document.getElementById('pro');
 
 let currentIndex = 0;
+let score=0;
 
 const quizData = [
   {
@@ -22,6 +24,15 @@ const quizData = [
     answer: "Hyper Text Markup Language"
   }
 ];
+function progress_manager() {
+  const selected = document.querySelector('input[name="answer"]:checked');
+  
+  if (selected && selected.value === quizData[currentIndex].answer) {
+    score++;
+    progress.value = score;
+  }
+}
+
 
 function loadQuestion() {
   message.textContent = '';
@@ -48,24 +59,42 @@ nextBtn.addEventListener('click', () => {
     return;
   }
 
-  if (selected.value === quizData[currentIndex].answer) {
-    message.textContent = "Correct!";
-    message.className = 'correct';
-  } else {
-    message.textContent = "Wrong!";
-    message.className = 'wrong';
-  }
+if (selected.value === quizData[currentIndex].answer) {
+  message.textContent = "Correct!";
+  message.className = 'correct';
+  progress_manager();   
+} else {
+  message.textContent = "Wrong!";
+  message.className = 'wrong';
+}
+
 
   setTimeout(() => {
     currentIndex++;
     if (currentIndex < quizData.length) {
       loadQuestion();
     } else {
-      questionEl.textContent = "Quiz Finished 🎉";
-      optionsEl.innerHTML = '';
-      nextBtn.style.display = 'none';
-      message.textContent = '';
-    }
+  progress.style.display = "none";
+  questionEl.textContent = `You scored ${score}/${quizData.length}`;
+
+  const restartBtn = document.createElement('button');
+  restartBtn.textContent = 'Restart Quiz';
+
+  restartBtn.addEventListener('click', () => {
+    currentIndex = 0;
+    score = 0;
+    progress.value = 0;
+    progress.style.display = 'block';
+    nextBtn.style.display = 'block';
+    loadQuestion();
+  });
+
+  optionsEl.innerHTML = '';
+  optionsEl.appendChild(restartBtn);
+  nextBtn.style.display = 'none';
+  message.textContent = '';
+}
+
   }, 800);
 });
 
