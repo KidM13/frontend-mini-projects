@@ -1,6 +1,6 @@
 const container = document.querySelector('.container');
 const username = document.querySelector('#text');
-const nameError = document.querySelector('nameError'); 
+const nameError = document.querySelector('.nameError'); 
 
 function validate_name(){
 const name = username.value.trim(); 
@@ -11,30 +11,30 @@ if(name.length >10){
     return 'username should be less than 10 characters'
 }
 else{
-    return ''
+    return 'username is valid'
 }
 }
 
 function showError(inputField, errorElement, message) { 
     errorElement.textContent = message; 
-    inputField.classList.add('invalid'); 
-    inputField.classList.remove('valid');
-    
+    nameError.classList.add('invalidUsername');
+    nameError.classList.remove('validUsername'); 
 } 
-function showSuccess(inputField, errorElement) { 
-    errorElement.textContent = ''; 
-    inputField.classList.add('valid');  
-    inputField.classList.remove('invalid'); 
+function showSuccess(inputField, errorElement,message) { 
+    errorElement.textContent = message; 
+    nameError.classList.add('validUsername'); 
+    nameError.classList.remove('invalidUsername'); 
 }
 
 
 username.addEventListener('input',()=>{
-    const errormsg=validate_name()
-    if(errormsg){
-        showError(username,nameError,errormsg)
+    const message=validate_name()
+    if(message==='username is valid'){
+        showSuccess(username,nameError,message)
     }
     else{
-        showSuccess(username,nameError)
+        showError(username,nameError,message)
+
     }
     
 })

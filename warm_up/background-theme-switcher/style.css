@@ -1,0 +1,74 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.theme-switcher{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 2px solid black;
+    width: 320px;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 2px solid black;
+    width: 320px;
+    padding: 15px;
+    border-radius: 6px;
+    
+}
+
+#text{
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 26px;
+}
+
+
+
+#nameError{
+    min-height: 16px;
+    font-size: 14px;
+    color: red;
+}
+.validUsername{
+    color: green;
+}
+.invalidUsername{
+    color: red;
+}
+#light{
+    background-color: white;
+    color: black;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+}
+#dark{
+    background-color: black;
+    color: white;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+}
+
+.dark-theme{
+    background-color: black;
+    color: white;
+}
+.light-theme{
+    background-color: white;
+    color: black;
+}
