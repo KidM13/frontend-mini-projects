@@ -1,7 +1,6 @@
 const addBtn = document.getElementById('add-btn');
-const uncompletedList = document.querySelector('.uncompleted-list');
-const completedList = document.querySelector('.completed-list');
-
+const uncompletedList = document.querySelector('.uncompleted-list .tasks');
+const completedList = document.querySelector('.completed-list .tasks');
 addBtn.addEventListener('click', () => {
   const task = prompt('Enter a task:');
   if (!task) return;
@@ -14,9 +13,9 @@ addBtn.addEventListener('click', () => {
 
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
-
-  taskItem.appendChild(taskText);
+  
   taskItem.appendChild(checkbox);
+  taskItem.appendChild(taskText);
 
   checkbox.addEventListener('change', () => {
     if (checkbox.checked) {
@@ -27,6 +26,5 @@ addBtn.addEventListener('click', () => {
       uncompletedList.appendChild(taskItem);
     }
   });
-
   uncompletedList.appendChild(taskItem);
 });
