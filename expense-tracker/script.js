@@ -1,27 +1,32 @@
-const description=document.getElementById('description');
-const amount=document.getElementById('amount');
-const submitbtn=document.querySelector('button');
-const expenseList=document.getElementById('#expense-list');
-const total_amount=document.getElementById('#total')
+const description = document.getElementById('description');
+const amount = document.getElementById('amount');
+const submitbtn = document.querySelector('button');
+const expenseList = document.getElementById('expense-list');
+const total_amount = document.getElementById('total');
 
-const total=0.00;
-function update_total_vlaue(total){
-    total_amount.textContent=total;
+let total = 0;
 
+function updateTotalValue() {
+  total_amount.textContent = total.toFixed(2);
 }
 
-submitbtn.addEventListener('click',()=>{
-const single_list=document.createElement('div');
-single_list.className='expneses';
+submitbtn.addEventListener('click', (e) => {
+  e.preventDefault();
 
-const desc=description.textContent();
-const amn=amount.textContent();
+  const desc = description.value.trim();
+  const amn = Number(amount.value);
 
-total+=amn;
-update_total_vlaue();
+  if (!desc || !amn) return;
 
-single_list.append(desc,amn);
-expenseList.appendChild(single_list);
+  total += amn;
+  updateTotalValue();
 
+  const single_list = document.createElement('li');
+  single_list.className = 'expenses';
+  single_list.textContent = `${desc} - $${amn}`;
 
+  expenseList.appendChild(single_list);
+
+  description.value = '';
+  amount.value = '';
 });
